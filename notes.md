@@ -64,3 +64,21 @@ See [https://testing-library.com/docs/dom-testing-library/intro] for documentati
         });
     });
 
+For a rendered list component:
+
+    import React from 'react';
+    import { render, fireEvent } from '@testing-library/react';
+    import '@testing-library/react/cleanup-after-each';
+
+    import PlayerList from './PlayerList';
+
+    //show no players if player ist is empty
+
+    describe('<Player />', () => {
+        it('should show "No Players" if none passed', () => {
+            const { getByText } = render(<PlayerList />);
+
+            getByText(/no players to list/i);
+        });
+    });
+
